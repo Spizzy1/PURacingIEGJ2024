@@ -1,8 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwbj463hj88sn"]
+[gd_scene load_steps=2 format=3 uid="uid://srgakjj8kh5l"]
 
 [ext_resource type="PackedScene" uid="uid://c4477ndcdvyxm" path="res://RaceTrack1Blockout.glb" id="1_0yff0"]
 
-[node name="Node3D" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Node3D2" type="Node3D"]
 
 [node name="RaceTrack1Blockout" parent="." instance=ExtResource("1_0yff0")]
