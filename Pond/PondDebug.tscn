@@ -1,15 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://dl7bfb7bv3mj7"]
 
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="1_tda48"]
-[ext_resource type="Texture2D" uid="uid://dk0m61i0fj86i" path="res://Models/DefaultMaterial_BaseColor.png" id="2_vvquf"]
 [ext_resource type="Texture2D" uid="uid://bfhdp02cpouae" path="res://Pond/tex_DebugGrid.svg" id="3_0uayq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_johlg"]
 friction = 0.0
 absorbent = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j88jv"]
-albedo_texture = ExtResource("2_vvquf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q82rs"]
 albedo_texture = ExtResource("3_0uayq")
@@ -35,46 +31,16 @@ sky_material = SubResource("ProceduralSkyMaterial_wjaj7")
 background_mode = 2
 sky = SubResource("Sky_talof")
 
+[sub_resource type="PrismMesh" id="PrismMesh_mnwrm"]
+left_to_right = 2.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u0e16"]
+data = PackedVector3Array(1.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 1.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 1.5, 0.5, 0.5, 1.5, 0.5, -0.5, 0.5, -0.5, 0.5, 1.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 1.5, 0.5, -0.5, 1.5, 0.5, 0.5, -0.5, -0.5, -0.5, 1.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="PondDebug" type="Node3D"]
 
 [node name="Vehicle Body" parent="." instance=ExtResource("1_tda48")]
-mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_johlg")
-
-[node name="Sphere" parent="Vehicle Body/Car Model" index="0"]
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cylinder" parent="Vehicle Body/Car Model" index="1"]
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cylinder_001" parent="Vehicle Body/Car Model" index="2"]
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Sphere_001" parent="Vehicle Body/Car Model" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.921939, 1.91275, -0.294158)
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cube_001" parent="Vehicle Body/Car Model" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999477, 1.7031, -0.00246972)
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Sphere_002" parent="Vehicle Body/Car Model" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01039, 1.72411, -0.00235587)
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cube" parent="Vehicle Body/Car Model" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245468, 2.11047, -0.912018)
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cube_002" parent="Vehicle Body/Car Model" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022499, 2.17115, -0.0598088)
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cylinder_002" parent="Vehicle Body/Car Model" index="8"]
-material_override = SubResource("StandardMaterial3D_j88jv")
-
-[node name="Cylinder_003" parent="Vehicle Body/Car Model" index="9"]
-material_override = SubResource("StandardMaterial3D_j88jv")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 1.8604, 0.0712891, -0.118317)
@@ -94,6 +60,22 @@ transform = Transform3D(-1, 0, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rsayg")
 
-[editable path="Vehicle Body"]
-[editable path="Vehicle Body/Car Model"]
-[editable path="Vehicle Body/Car Model/Mouse Model"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.39287e-07, 0, -10.2862, 0, 7.72797, 0, 16.9129, 0, -4.49623e-07, 0, 3.97165, 10.3325)
+mesh = SubResource("PrismMesh_mnwrm")
+skeleton = NodePath("../Vehicle Body")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_u0e16")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.21786e-06, 0, 10.2862, 0, 7.72797, 0, -16.9129, 0, 1.34887e-06, -1.97784, 3.97165, 64.4834)
+mesh = SubResource("PrismMesh_mnwrm")
+skeleton = NodePath("../Vehicle Body")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_u0e16")
