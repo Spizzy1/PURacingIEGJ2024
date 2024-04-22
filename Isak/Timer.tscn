@@ -54,10 +54,9 @@ script = ExtResource("2_lgjir")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 380.0
-offset_top = 142.0
-offset_right = 420.0
-offset_bottom = 173.0
-text = "AAA"
+offset_left = 224.0
+offset_right = 315.0
+offset_bottom = 31.0
+text = "Add Lap (DEBUG)"
 
 [connection signal="pressed" from="Button" to="Tracker" method="reset"]
