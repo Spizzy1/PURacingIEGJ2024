@@ -1,19 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0vw75u1usdkt"]
+[gd_scene load_steps=10 format=3 uid="uid://d0vw75u1usdkt"]
 
 [ext_resource type="Script" path="res://Pond/CarMovement.gd" id="1_80cua"]
 [ext_resource type="Script" path="res://Pond/CarWheel.gd" id="2_rx08v"]
+[ext_resource type="Texture2D" uid="uid://bfhdp02cpouae" path="res://Pond/tex_DebugGrid.svg" id="3_os1p4"]
 [ext_resource type="PackedScene" uid="uid://bb3bqeooprluo" path="res://Models/Poessie cat car.glb" id="3_w0yr7"]
 [ext_resource type="PackedScene" uid="uid://la51e7vf3kbc" path="res://Pond/MouseModel_Blockout.glb" id="4_a2q7a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_euden"]
 rough = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovht3"]
+albedo_texture = ExtResource("3_os1p4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8twye"]
+material = SubResource("StandardMaterial3D_ovht3")
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.3
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ur125"]
+custom_solver_bias = 0.1
 size = Vector3(2.08008, 0.57922, 2.1547)
 
 [node name="Vehicle Body" type="VehicleBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19804, -0.118317)
-mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_euden")
 constant_force = Vector3(0, -100, 0)
 script = ExtResource("1_80cua")
@@ -23,40 +33,56 @@ steering_max_deg = 20.0
 [node name="Wheel_1" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.840674, 0.853088)
 use_as_steering = true
-wheel_roll_influence = 0.5
-wheel_radius = 0.385
-wheel_rest_length = 0.53
-wheel_friction_slip = 5.0
+wheel_radius = 0.25
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_1"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, 0.853088)
 use_as_steering = true
-wheel_roll_influence = 0.5
-wheel_radius = 0.385
-wheel_rest_length = 0.53
-wheel_friction_slip = 5.0
+wheel_radius = 0.25
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_2"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.840674, -1.1105)
 use_as_traction = true
-wheel_roll_influence = 0.5
-wheel_radius = 0.385
-wheel_rest_length = 0.53
-wheel_friction_slip = 5.0
+wheel_radius = 0.25
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
-steering_multiplier = -1.0
+steering_multiplier = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_3"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_4" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, -1.11011)
 use_as_traction = true
-wheel_roll_influence = 0.5
-wheel_radius = 0.385
-wheel_rest_length = 0.53
-wheel_friction_slip = 5.0
+wheel_radius = 0.25
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
-steering_multiplier = -1.0
+steering_multiplier = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_4"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Car Model" parent="." instance=ExtResource("3_w0yr7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.972798, 0)

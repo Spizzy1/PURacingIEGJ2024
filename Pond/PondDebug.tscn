@@ -13,6 +13,7 @@ albedo_texture = ExtResource("2_vvquf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q82rs"]
 albedo_texture = ExtResource("3_0uayq")
+uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hqqui"]
 material = SubResource("StandardMaterial3D_q82rs")
@@ -37,6 +38,7 @@ sky = SubResource("Sky_talof")
 [node name="PondDebug" type="Node3D"]
 
 [node name="Vehicle Body" parent="." instance=ExtResource("1_tda48")]
+mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_johlg")
 
 [node name="Sphere" parent="Vehicle Body/Car Model" index="0"]
