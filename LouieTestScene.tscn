@@ -1,7 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://srgakjj8kh5l"]
+[gd_scene load_steps=6 format=3 uid="uid://dwbj463hj88sn"]
 
 [ext_resource type="PackedScene" uid="uid://c4477ndcdvyxm" path="res://RaceTrack1Blockout.glb" id="1_0yff0"]
+[ext_resource type="Script" path="res://PowerUpManager.gd" id="1_s620p"]
 
-[node name="Node3D2" type="Node3D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vak20"]
+
+[sub_resource type="Sky" id="Sky_fyar6"]
+sky_material = SubResource("ProceduralSkyMaterial_vak20")
+
+[sub_resource type="Environment" id="Environment_4qdcx"]
+background_mode = 2
+sky = SubResource("Sky_fyar6")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_s620p")
 
 [node name="RaceTrack1Blockout" parent="." instance=ExtResource("1_0yff0")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 102, 45, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 163, 0)
+light_energy = 16.0
+light_indirect_energy = 10.374
+spot_range = 360.375
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.8958, 68.6768, -23.3275)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4qdcx")
