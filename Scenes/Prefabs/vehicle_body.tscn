@@ -17,38 +17,46 @@ mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_euden")
 constant_force = Vector3(0, -100, 0)
 script = ExtResource("1_80cua")
+engine_max = 80.0
+steering_max_deg = 20.0
 
 [node name="Wheel_1" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.696346, 0.853088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.840674, 0.853088)
 use_as_steering = true
-wheel_radius = 0.235
-wheel_rest_length = 1.0
+wheel_roll_influence = 0.5
+wheel_radius = 0.385
+wheel_rest_length = 0.53
 wheel_friction_slip = 5.0
 script = ExtResource("2_rx08v")
 
 [node name="Wheel_2" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.696346, 0.853088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, 0.853088)
 use_as_steering = true
-wheel_radius = 0.235
-wheel_rest_length = 1.0
+wheel_roll_influence = 0.5
+wheel_radius = 0.385
+wheel_rest_length = 0.53
 wheel_friction_slip = 5.0
 script = ExtResource("2_rx08v")
 
 [node name="Wheel_3" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.696346, -1.1105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.840674, -1.1105)
 use_as_traction = true
-wheel_radius = 0.235
-wheel_rest_length = 1.0
+wheel_roll_influence = 0.5
+wheel_radius = 0.385
+wheel_rest_length = 0.53
 wheel_friction_slip = 5.0
 script = ExtResource("2_rx08v")
+steering_multiplier = -1.0
 
 [node name="Wheel_4" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.696346, -1.11011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, -1.11011)
 use_as_traction = true
-wheel_radius = 0.235
-wheel_rest_length = 1.0
+wheel_roll_influence = 0.5
+wheel_radius = 0.385
+wheel_rest_length = 0.53
 wheel_friction_slip = 5.0
 script = ExtResource("2_rx08v")
+steering_multiplier = -1.0
 
 [node name="Car Model" parent="." instance=ExtResource("3_w0yr7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.972798, 0)

@@ -1,6 +1,11 @@
 extends VehicleBody3D
 
 var wheels: Array = [];
+
+@export
+var engine_max: float = 150
+@export
+var steering_max_deg: float = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(0,4):
@@ -13,8 +18,8 @@ func _ready():
 func _process(delta):
 	
 	var wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
-	engine_force = wasd.y*150
-	steering = deg_to_rad(wasd.x*20* -1)
+	engine_force = wasd.y*engine_max
+	steering = deg_to_rad(wasd.x*steering_max_deg* -1)
 	
 	
 	
