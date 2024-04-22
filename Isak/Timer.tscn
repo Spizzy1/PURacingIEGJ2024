@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://s8qumlnpsjtx"]
+
+[ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_dsmju"]
+[ext_resource type="Script" path="res://Isak/Tracker.gd" id="2_lgjir"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_spctk"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 224.0
+offset_bottom = 77.0
+
+[node name="TableContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_dsmju")
+separation_horizontal = null
+separation_vertical = null
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/TableContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/TableContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/TableContainer/HBoxContainer3/PanelContainer"]
+custom_minimum_size = Vector2(52, 0)
+layout_mode = 2
+text = "Time"
+label_settings = SubResource("LabelSettings_spctk")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/TableContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/TableContainer/HBoxContainer3/PanelContainer2"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Laps
+"
+
+[node name="Tracker" type="Node" parent="."]
+script = ExtResource("2_lgjir")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 142.0
+offset_right = 420.0
+offset_bottom = 173.0
+text = "AAA"
+
+[connection signal="pressed" from="Button" to="Tracker" method="reset"]
