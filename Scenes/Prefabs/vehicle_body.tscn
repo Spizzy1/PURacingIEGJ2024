@@ -40,6 +40,7 @@ suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+used_for_driving = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_1"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -54,6 +55,7 @@ suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+used_for_driving = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_2"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -69,6 +71,7 @@ damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
 steering_multiplier = 0.0
+canBreak = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_3"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -84,6 +87,7 @@ damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
 steering_multiplier = 0.0
+canBreak = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_4"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -127,3 +131,6 @@ script = ExtResource("4_evmu0")
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 doppler_tracking = 2
 fov = 63.8
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
