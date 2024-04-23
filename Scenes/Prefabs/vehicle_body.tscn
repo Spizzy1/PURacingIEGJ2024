@@ -97,10 +97,6 @@ shape = SubResource("BoxShape3D_ur125")
 [node name="Camera Pivot" type="Node3D" parent="."]
 script = ExtResource("4_evmu0")
 
-[node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
-transform = Transform3D(-1, -4.9738e-14, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
-fov = 63.8
-
 [node name="FinishedRat" parent="." instance=ExtResource("4_k1jju")]
 transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0.467684, -0.0125276)
 
@@ -122,3 +118,12 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 visible = false
 mesh = SubResource("CylinderMesh_8twye")
 skeleton = NodePath("../../Wheel_5")
+
+[node name="Camera Controller" type="Node3D" parent="."]
+transform = Transform3D(-1, -4.9738e-14, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
+script = ExtResource("4_evmu0")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Controller"]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+doppler_tracking = 2
+fov = 63.8
