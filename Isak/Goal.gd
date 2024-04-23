@@ -18,6 +18,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == "Vehicle Body" && body.get_node("CheckpointTracker").curCheckP == totalCheckpoints:
 		player_entered.emit()
+		body.get_node("CheckpointTracker").curCheckP = 0
 	pass # Replace with function body.
 
 

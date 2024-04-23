@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dq2lvm2wbj8vo"]
+[gd_scene load_steps=21 format=3 uid="uid://dq2lvm2wbj8vo"]
 
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_4t57f"]
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_2mvx4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfjs535uog34y" path="res://Models/Car/Trail 2024-04-23 12_37_20.png" id="7_4tqco"]
 [ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="8_jeep8"]
 [ext_resource type="Script" path="res://Isak/MapManager.gd" id="9_xatao"]
+[ext_resource type="AudioStream" uid="uid://dts7qfla78ane" path="res://Music/Aurgtphappy.wav" id="10_jsgbw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
@@ -100,6 +101,10 @@ script = ExtResource("9_xatao")
 
 [node name="ReloadManager" type="Node3D" parent="."]
 script = ExtResource("8_jeep8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_jsgbw")
+autoplay = true
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
