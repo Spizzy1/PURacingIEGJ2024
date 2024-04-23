@@ -12,8 +12,11 @@ var brake_force: float = 50
 
 @export
 var angular_correction_amount: float = 1
+
+var timer:Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	timer = get_node("Timer")
 	for i in range(0,4):
 		wheels.append(get_node("./Wheel_"+str(i+1)))
 		print(wheels[i])
@@ -22,6 +25,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	
 	
 	var wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
 	engine_force = wasd.y*engine_max
@@ -35,4 +40,11 @@ func _process(delta):
 	#rotation.z = (rotation.z * angular_correction_amount)
 	print(str(rotation.x) + " and " + str(rotation.z))
 	
+	if Input.is_action_just_pressed("Flip"):
+		rotation.x = 0
+		rotation.z = 0
+	
 	pass
+
+func _physics_process(delta):
+	$"Camera Controller/Camera3D".fov =  linear_velocity.length()*2 + 50
