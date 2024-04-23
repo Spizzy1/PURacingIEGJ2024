@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_44wim"]
 [ext_resource type="Texture2D" uid="uid://cv3rvxnyfi1qv" path="res://RaceTrackBlockout3_BoomBladeren_diffuse.png" id="4_boi43"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="4_ejhav"]
-[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Poessie cat car.glb" id="5_vbx7m"]
+[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="5_vbx7m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
