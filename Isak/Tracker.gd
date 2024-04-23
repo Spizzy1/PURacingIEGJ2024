@@ -4,13 +4,17 @@ var origin = 0
 var element_scene = preload("res://Isak/TimerContent.tscn")
 var laps = 0
 var current_element
+
+
 @onready
 var container = get_parent().get_node("PanelContainer/TableContainer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	reset()
-	pass # Replace with function body.
 	
+	#reset()
+	pass # Replace with function body.
+
+
 func new_timer():
 	var element = preload("res://Isak/TimerContent.tscn").instantiate()
 	element.get_node("Laps").text = str(laps)
@@ -29,9 +33,12 @@ func reset():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var diff = Time.get_ticks_msec() - origin
-	var minutes = int(diff / 60 / 1000)
-	var seconds = int(diff / 1000) % 60
-	var miliseconds = int(diff) % 1000
-	current_element.get_node("Time").text = ("%02d" % minutes) + (":%02d" % seconds) + (":%03d" % miliseconds)
+	if current_element:
+		var diff = Time.get_ticks_msec() - origin
+		var minutes = int(diff / 60 / 1000)
+		var seconds = int(diff / 1000) % 60
+		var miliseconds = int(diff) % 1000
+		current_element.get_node("Time").text = ("%02d" % minutes) + (":%02d" % seconds) + (":%03d" % miliseconds)
 	pass
+
+
