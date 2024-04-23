@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dq2lvm2wbj8vo"]
+[gd_scene load_steps=20 format=3 uid="uid://dq2lvm2wbj8vo"]
 
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_4t57f"]
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_2mvx4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="4_rdvnn"]
 [ext_resource type="PackedScene" uid="uid://s8qumlnpsjtx" path="res://Isak/Timer.tscn" id="5_enf4p"]
 [ext_resource type="Script" path="res://Louie/CheckpointTracker.gd" id="5_s4ola"]
+[ext_resource type="Texture2D" uid="uid://bfjs535uog34y" path="res://Models/Car/Trail 2024-04-23 12_37_20.png" id="7_4tqco"]
 [ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="8_jeep8"]
 [ext_resource type="Script" path="res://Isak/MapManager.gd" id="9_xatao"]
 
@@ -16,6 +17,7 @@ sky_material = SubResource("ProceduralSkyMaterial_r70bb")
 
 [sub_resource type="Environment" id="Environment_n44sb"]
 background_mode = 2
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_r4ja8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v25g6"]
@@ -25,9 +27,29 @@ size = Vector3(1, 29.4424, 62.4586)
 friction = 0.0
 absorbent = true
 
+[sub_resource type="Curve" id="Curve_hpowu"]
+_data = [Vector2(0, 0.857143), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpmto"]
+curve = SubResource("Curve_hpowu")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c4ewb"]
+emission_shape = 3
+emission_box_extents = Vector3(-1.37, 1, 1)
+inherit_velocity_ratio = 1.0
+gravity = Vector3(0, 10, 0)
+damping_max = 10.0
+scale_over_velocity_curve = SubResource("CurveTexture_wpmto")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtatt"]
+transparency = 1
+albedo_texture = ExtResource("7_4tqco")
+billboard_mode = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_i6fr2"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_xtatt")
 
 [node name="Node3D" type="Node3D"]
 
@@ -69,7 +91,7 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 script = ExtResource("5_s4ola")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Vehicle Body"]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.772308, -0.641054)
 process_material = SubResource("ParticleProcessMaterial_c4ewb")
 draw_pass_1 = SubResource("PlaneMesh_i6fr2")
 
