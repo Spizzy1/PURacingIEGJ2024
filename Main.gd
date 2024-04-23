@@ -1,0 +1,21 @@
+extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+@rpc("reliable")
+func connect_player():
+	print("Creating requester")
+	var client_requester = preload("res://client_requester.tscn").instantiate()
+	client_requester.name = str(multiplayer.get_unique_id())
+	add_child(client_requester)
+	var UI = get_node_or_null("OnlineUI")
+	if UI:
+		UI.visible = true
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

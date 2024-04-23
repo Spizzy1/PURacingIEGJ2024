@@ -1,10 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://bt4pru1ubjcu1"]
+[gd_scene load_steps=55 format=3 uid="uid://ciau8ar1rtt4t"]
 
 [ext_resource type="PackedScene" uid="uid://s8qumlnpsjtx" path="res://Isak/Timer.tscn" id="1_xsfth"]
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_44wim"]
 [ext_resource type="Texture2D" uid="uid://cv3rvxnyfi1qv" path="res://RaceTrackBlockout3_BoomBladeren_diffuse.png" id="4_boi43"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="4_ejhav"]
-[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Poessie cat car.glb" id="5_vbx7m"]
+[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="5_vbx7m"]
+[ext_resource type="Script" path="res://Isak/MapManager.gd" id="5_xxbvo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
@@ -14,6 +15,9 @@ sky_material = SubResource("ProceduralSkyMaterial_r70bb")
 [sub_resource type="Environment" id="Environment_n44sb"]
 background_mode = 2
 sky = SubResource("Sky_r4ja8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v25g6"]
+size = Vector3(1, 10.7304, 16.5904)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p3rp"]
 
@@ -416,129 +420,10 @@ shadow_mesh = SubResource("ArrayMesh_pjd7r")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6aefq"]
 data = PackedVector3Array(-1.6552, -1.1628, 1.2996, -2.1992, -0.7344, -0.6362, -1.86, -0.7344, 1.3348, -1.6552, -1.1628, 1.2996, -1.9945, -1.1628, -0.6714, -2.1992, -0.7344, -0.6362, -1.9945, -1.1628, -0.6714, 1.6551, 1.1628, -1.2996, -2.1992, -0.7344, -0.6362, -1.9945, -1.1628, -0.6714, 1.8599, 0.7344, -1.3348, 1.6551, 1.1628, -1.2996, 1.8599, 0.7344, -1.3348, 1.9944, 1.1628, 0.6714, 1.6551, 1.1628, -1.2996, 1.8599, 0.7344, -1.3348, 2.1992, 0.7344, 0.6362, 1.9944, 1.1628, 0.6714, 2.1992, 0.7344, 0.6362, -1.86, -0.7344, 1.3348, 1.9944, 1.1628, 0.6714, 2.1992, 0.7344, 0.6362, -1.6552, -1.1628, 1.2996, -1.86, -0.7344, 1.3348, -1.9945, -1.1628, -0.6714, 2.1992, 0.7344, 0.6362, 1.8599, 0.7344, -1.3348, -1.9945, -1.1628, -0.6714, -1.6552, -1.1628, 1.2996, 2.1992, 0.7344, 0.6362, 1.6551, 1.1628, -1.2996, -1.86, -0.7344, 1.3348, -2.1992, -0.7344, -0.6362, 1.6551, 1.1628, -1.2996, 1.9944, 1.1628, 0.6714, -1.86, -0.7344, 1.3348)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v25g6"]
-size = Vector3(1, 10.7304, 16.5904)
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n44sb")
-
-[node name="RaceTrackBlockout3" type="Node3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-
-[node name="Empty" type="Node3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(11.344, 0, 0, 0, 11.344, 0, 0, 0, 11.344, -0.0408266, 0, 0.238158)
-
-[node name="Ground" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5885, -1.28267, 0)
-mesh = SubResource("ArrayMesh_12du4")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Ground"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_6ksjr")
-
-[node name="Fence2" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, 42.8386)
-mesh = SubResource("ArrayMesh_m3v22")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Fence2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Fence2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_oauee")
-
-[node name="Fence" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, -4.0623)
-mesh = SubResource("ArrayMesh_lvetd")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Fence"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Fence/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_rj20j")
-
-[node name="Tree" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(0.880402, 0, 0.474229, 0, 1, 0, -0.474229, 0, 0.880402, -9.39243, 14.1265, -23.2004)
-mesh = SubResource("ArrayMesh_qxj6v")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Tree"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Tree/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_2b34i")
-
-[node name="Boombladeren" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(-1.31062, 0, -6.60087, 0, 6.72973, 0, 6.60087, 0, -1.31062, -14.1104, 55.5711, -20.7542)
-mesh = SubResource("ArrayMesh_rsg5t")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Boombladeren"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Boombladeren/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bpykf")
-
-[node name="DogHouse" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5082, 11.6109, 22.7143)
-mesh = SubResource("ArrayMesh_d07lq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/DogHouse"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/DogHouse/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_oedyr")
-
-[node name="RaceTrack" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -2.97097, 0.171411, -9.65176)
-mesh = SubResource("ArrayMesh_ejgy8")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/RaceTrack"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/RaceTrack/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_8fo80")
-
-[node name="Plank4" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.740836, 20.7747)
-mesh = SubResource("ArrayMesh_8qqo2")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Plank4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Plank4/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_g2ftd")
-
-[node name="Plank3" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.744641, 24.8213)
-mesh = SubResource("ArrayMesh_q50rr")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Plank3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Plank3/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_jiyvh")
-
-[node name="Plank2" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.05993, 20.7747)
-mesh = SubResource("ArrayMesh_xr5nw")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Plank2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Plank2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_agyy0")
-
-[node name="Plank" type="MeshInstance3D" parent="RaceTrackBlockout3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.06374, 24.8213)
-mesh = SubResource("ArrayMesh_67ien")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="RaceTrackBlockout3/Plank"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RaceTrackBlockout3/Plank/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_6aefq")
 
 [node name="Poessie cat car" parent="." instance=ExtResource("5_vbx7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -506.517, 243.25, 308.453)
@@ -555,7 +440,250 @@ shape = SubResource("BoxShape3D_v25g6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 364.0
+offset_right = 538.0
+offset_bottom = 31.0
+text = "Change Map (DEBUG)"
+
 [node name="Timer" parent="CanvasLayer" instance=ExtResource("1_xsfth")]
+
+[node name="MapManager" type="Node3D" parent="."]
+script = ExtResource("5_xxbvo")
+
+[node name="Maps" type="Node3D" parent="."]
+
+[node name="RaceTrackBlockout3" type="Node3D" parent="Maps"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Empty" type="Node3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(11.344, 0, 0, 0, 11.344, 0, 0, 0, 11.344, -0.0408266, 0, 0.238158)
+
+[node name="Ground" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5885, -1.28267, 0)
+mesh = SubResource("ArrayMesh_12du4")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6ksjr")
+
+[node name="Fence2" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, 42.8386)
+mesh = SubResource("ArrayMesh_m3v22")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Fence2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Fence2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oauee")
+
+[node name="Fence" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, -4.0623)
+mesh = SubResource("ArrayMesh_lvetd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Fence"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Fence/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_rj20j")
+
+[node name="Tree" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(0.880402, 0, 0.474229, 0, 1, 0, -0.474229, 0, 0.880402, -9.39243, 14.1265, -23.2004)
+mesh = SubResource("ArrayMesh_qxj6v")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Tree"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Tree/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2b34i")
+
+[node name="Boombladeren" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(-1.31062, 0, -6.60087, 0, 6.72973, 0, 6.60087, 0, -1.31062, -14.1104, 55.5711, -20.7542)
+mesh = SubResource("ArrayMesh_rsg5t")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Boombladeren"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Boombladeren/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bpykf")
+
+[node name="DogHouse" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5082, 11.6109, 22.7143)
+mesh = SubResource("ArrayMesh_d07lq")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/DogHouse"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/DogHouse/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oedyr")
+
+[node name="RaceTrack" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -2.97097, 0.171411, -9.65176)
+mesh = SubResource("ArrayMesh_ejgy8")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/RaceTrack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/RaceTrack/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8fo80")
+
+[node name="Plank4" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.740836, 20.7747)
+mesh = SubResource("ArrayMesh_8qqo2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Plank4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Plank4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g2ftd")
+
+[node name="Plank3" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.744641, 24.8213)
+mesh = SubResource("ArrayMesh_q50rr")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Plank3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Plank3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jiyvh")
+
+[node name="Plank2" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.05993, 20.7747)
+mesh = SubResource("ArrayMesh_xr5nw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Plank2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Plank2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_agyy0")
+
+[node name="Plank" type="MeshInstance3D" parent="Maps/RaceTrackBlockout3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.06374, 24.8213)
+mesh = SubResource("ArrayMesh_67ien")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout3/Plank"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout3/Plank/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6aefq")
+
+[node name="RaceTrackBlockout4" type="Node3D" parent="Maps"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Empty" type="Node3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(11.344, 0, 0, 0, 11.344, 0, 0, 0, 11.344, -0.0408266, 0, 0.238158)
+
+[node name="Ground" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5885, -1.28267, 0)
+mesh = SubResource("ArrayMesh_12du4")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6ksjr")
+
+[node name="Fence2" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, 42.8386)
+mesh = SubResource("ArrayMesh_m3v22")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Fence2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Fence2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oauee")
+
+[node name="Fence" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9785, 1.37832, -4.0623)
+mesh = SubResource("ArrayMesh_lvetd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Fence"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Fence/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_rj20j")
+
+[node name="Tree" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(0.880402, 0, 0.474229, 0, 1, 0, -0.474229, 0, 0.880402, -9.39243, 14.1265, -23.2004)
+mesh = SubResource("ArrayMesh_qxj6v")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Tree"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Tree/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2b34i")
+
+[node name="Boombladeren" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(-1.31062, 0, -6.60087, 0, 6.72973, 0, 6.60087, 0, -1.31062, -14.1104, 55.5711, -20.7542)
+mesh = SubResource("ArrayMesh_rsg5t")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Boombladeren"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Boombladeren/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bpykf")
+
+[node name="DogHouse" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5082, 11.6109, 22.7143)
+mesh = SubResource("ArrayMesh_d07lq")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/DogHouse"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/DogHouse/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oedyr")
+
+[node name="RaceTrack" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -2.97097, 0.171411, -9.65176)
+mesh = SubResource("ArrayMesh_ejgy8")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/RaceTrack"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/RaceTrack/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_8fo80")
+
+[node name="Plank4" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.740836, 20.7747)
+mesh = SubResource("ArrayMesh_8qqo2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Plank4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Plank4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g2ftd")
+
+[node name="Plank3" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.55367, 0.744641, 24.8213)
+mesh = SubResource("ArrayMesh_q50rr")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Plank3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Plank3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jiyvh")
+
+[node name="Plank2" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.05993, 20.7747)
+mesh = SubResource("ArrayMesh_xr5nw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Plank2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Plank2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_agyy0")
+
+[node name="Plank" type="MeshInstance3D" parent="Maps/RaceTrackBlockout4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1387, 1.06374, 24.8213)
+mesh = SubResource("ArrayMesh_67ien")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Maps/RaceTrackBlockout4/Plank"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maps/RaceTrackBlockout4/Plank/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6aefq")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]

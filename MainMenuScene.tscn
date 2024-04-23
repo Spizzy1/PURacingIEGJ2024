@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://crkigft271w2y"]
+[gd_scene load_steps=4 format=3 uid="uid://dnmmogncngtm4"]
 
 [ext_resource type="Script" path="res://ExitButton.gd" id="1_22i4y"]
 [ext_resource type="Script" path="res://MainMenuScript.gd" id="1_an167"]
@@ -63,9 +63,19 @@ text = "test
 layout_mode = 2
 text = "Start"
 
+[node name="OnlineButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start (Online)"
+
 [node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/OnlineButton" to="." method="_on_online_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Settings" to="." method="_on_start_button_pressed"]

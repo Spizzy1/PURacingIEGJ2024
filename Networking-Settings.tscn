@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxdxjuotf8pp2"]
+
+[ext_resource type="Script" path="res://IP.gd" id="1_xjgu2"]
+[ext_resource type="Script" path="res://Port.gd" id="2_s2pn0"]
+
+[node name="Networking-settings" type="VBoxContainer"]
+
+[node name="IP-Header" type="Label" parent="."]
+layout_mode = 2
+text = "Server IP"
+
+[node name="IP" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Leave empty for defaut (main server if it is up)"
+expand_to_text_length = true
+script = ExtResource("1_xjgu2")
+
+[node name="Port-Header" type="Label" parent="."]
+layout_mode = 2
+text = "Port"
+
+[node name="Port" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Leave empty for default"
+script = ExtResource("2_s2pn0")
+
+[connection signal="text_submitted" from="IP" to="IP" method="_on_text_submitted"]
+[connection signal="text_submitted" from="Port" to="Port" method="_on_text_submitted"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhvv0ra8wwrbc"]
+
+[ext_resource type="Script" path="res://Online.gd" id="1_54v4h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xnoxo"]
+font_size = 48
+
+[node name="OnlineUI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00362, 1)
+script = ExtResource("1_54v4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -50.5
+offset_right = 217.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Create Room"
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join Room"
+
+[node name="Code" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Room Code (Input Required) "
+expand_to_text_length = true
+
+[node name="Max Players" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Max players (Default 2, only needed if you are creating)"
+expand_to_text_length = true
+
+[node name="Load" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -11.5
+offset_right = 39.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading.... (Connecting to server)"
+label_settings = SubResource("LabelSettings_xnoxo")
+
+[connection signal="pressed" from="VBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
