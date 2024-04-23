@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi1v725teh335"]
+
+[ext_resource type="PackedScene" uid="uid://cb1so1gaenqnh" path="res://Tracks/racetrack1-3.tscn" id="1_3pcnu"]
+[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_qgvhv"]
+[ext_resource type="Script" path="res://Isak/Goal.gd" id="3_rgpmq"]
+[ext_resource type="PackedScene" uid="uid://s8qumlnpsjtx" path="res://Isak/Timer.tscn" id="4_gxtme"]
+[ext_resource type="Script" path="res://Isak/MapManager.gd" id="8_f24es"]
+[ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="9_s1oqv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
+
+[sub_resource type="Sky" id="Sky_r4ja8"]
+sky_material = SubResource("ProceduralSkyMaterial_r70bb")
+
+[sub_resource type="Environment" id="Environment_n44sb"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_r4ja8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v25g6"]
+size = Vector3(1, 29.4424, 62.4586)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n44sb")
+
+[node name="Maps" type="Node3D" parent="."]
+
+[node name="RaceTrack7" parent="Maps" instance=ExtResource("1_3pcnu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="RaceTrack8" parent="Maps" instance=ExtResource("1_3pcnu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Poessie cat car" parent="." instance=ExtResource("2_qgvhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -506.517, 243.25, 308.453)
+
+[node name="Goal" type="Area3D" parent="."]
+script = ExtResource("3_rgpmq")
+totalCheckpoints = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.01901, 54.2596)
+shape = SubResource("BoxShape3D_v25g6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer" parent="CanvasLayer" instance=ExtResource("4_gxtme")]
+
+[node name="MapManager" type="Node3D" parent="."]
+script = ExtResource("8_f24es")
+
+[node name="ReloadManager" type="Node3D" parent="."]
+script = ExtResource("9_s1oqv")
+
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
+[connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
+[connection signal="player_entered" from="Goal" to="MapManager" method="switch_map"]
+
+[editable path="CanvasLayer/Timer"]

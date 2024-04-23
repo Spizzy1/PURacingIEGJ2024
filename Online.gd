@@ -22,10 +22,16 @@ func _process(delta):
 
 func _on_create_pressed():
 	var roomcode = $VBoxContainer/Code.text
-	var maxplr = int($"VBoxContainer/Max Players".text)
+	var maxplr = 0
+	if $"VBoxContainer/Max Players".text != "":
+		maxplr = int($"VBoxContainer/Max Players".text)
+	else:
+		maxplr = 2
 	get_parent().get_node(str(id)).create_custom_room.rpc_id(1, roomcode, maxplr)
 	pass # Replace with function body.
 
 
 func _on_join_pressed():
+	var roomcode = $VBoxContainer/Code.text
+	get_parent().get_node(str(id)).join_custom_room.rpc_id(1, roomcode, 0)
 	pass # Replace with function body.

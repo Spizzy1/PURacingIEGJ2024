@@ -108,33 +108,51 @@ func dismiss_room(room : Room):
 
 
 func check_codes(code, id):
-	for room : Room in rooms:
-		if room.code == code:
-			join_room(rooms, get_node(id))
+	print("Checking")
+	for room in rooms:
+		print("Checking room %s" % room)
+		print(room.max_players)
+		print(room.code)
+		print(code)
+		if room.code == code && len(room.participants) < room.max_players:
+			print("Joining room")
+			join_room(room, get_node(id), code)
+			pass
 	pass
 
 
-func join_room(room : Room, connector):
-	room.participants.append(connector)
+func join_room(room : Room, connector, code):
+	room.participants.append(connector.client)
+	connector.room_name = str(room.name)
+	connector.room_host = false
 	for participant in room.participants:
-		participant.update_room()
+		var cconector = get_node(str(participant.id))
+		cconector.join_custom_room.rpc_id(int(str(cconector.name)), code, room.max_players)
+		cconector.update_room()
 	pass
 
 func leave_room(room : Room, connector):
-	room.participants.erase(connector)
+	room.participants.erase(connector.client)
 	for participant in room.participants:
 		participant.update_room()
+	connector.room_name = ""
 	pass
 
-func create_room(code, id):
-	for room : Room in rooms:
+func create_room(code, id, max_players):
+	for room in rooms:
 		if room.code == code:
 			return 1
 	var room = Room.new()
 	room.id = int(str(id) + str(rooms_created))
 	rooms_created += 1
-	room.participants.append(get_node(id))
+	room.participants.append(get_node(id).client)
 	room.name = str(room.id)
+	room.code = code
+	room.max_players = max_players 
+	rooms.append(room)
+	get_node(str(id)).room_name = str(room.name)
+	get_node(str(id)).room_host = true
+	add_child(room)
 	
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.

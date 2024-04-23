@@ -4,6 +4,7 @@ class_name Room
 var participants : Array[Client]
 var id : int
 var code : String
+var max_players : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -9,6 +9,10 @@ var steering_max_deg: float = 10
 @export
 var brake_force: float = 50
 
+var is_main = true
+
+var wasd
+var isbreak
 
 @export
 var angular_correction_amount: float = 1
@@ -27,8 +31,9 @@ func _ready():
 func _process(delta):
 	
 	
-	
-	var wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
+	if is_main:
+		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
+		isbreak = Input.is_action_just_pressed("Flip")
 	engine_force = wasd.y*engine_max
 	steering = deg_to_rad(wasd.x*steering_max_deg* -1)
 	if Input.is_action_pressed("Break"):
@@ -39,8 +44,8 @@ func _process(delta):
 	#rotation.x = (rotation.x * angular_correction_amount)
 	#rotation.z = (rotation.z * angular_correction_amount)
 	print(str(rotation.x) + " and " + str(rotation.z))
-	
-	if Input.is_action_just_pressed("Flip"):
+
+	if isbreak:
 		rotation.x = 0
 		rotation.z = 0
 	
