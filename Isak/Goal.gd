@@ -1,6 +1,10 @@
 extends Area3D
 
 signal player_entered
+
+@export
+var totalCheckpoints = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,6 +16,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.name == "Vehicle Body2":
+	if body.name == "Vehicle Body2" && body.get_node("CheckpoinTracker").curCheckP == totalCheckpoints:
 		player_entered.emit()
 	pass # Replace with function body.
