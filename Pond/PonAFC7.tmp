@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dl7bfb7bv3mj7"]
+[gd_scene load_steps=13 format=3 uid="uid://dl7bfb7bv3mj7"]
 
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="1_tda48"]
 [ext_resource type="Texture2D" uid="uid://bfhdp02cpouae" path="res://Pond/tex_DebugGrid.svg" id="3_0uayq"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/CameraController.gd" id="3_j33p1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_johlg"]
 friction = 0.0
@@ -42,8 +41,6 @@ data = PackedVector3Array(1.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 1.5, 0
 
 [node name="Vehicle Body" parent="." instance=ExtResource("1_tda48")]
 physics_material_override = SubResource("PhysicsMaterial_johlg")
-angular_damp = 5.0
-brake_force = 1.0
 angular_correction_amount = 0.999
 
 [node name="Floor" type="MeshInstance3D" parent="."]
@@ -84,11 +81,3 @@ skeleton = NodePath("../Vehicle Body")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_u0e16")
-
-[node name="Camera Pivot2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19804, -0.118317)
-script = ExtResource("3_j33p1")
-
-[node name="Camera3D" type="Camera3D" parent="Camera Pivot2"]
-transform = Transform3D(-1, -4.9738e-14, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
-fov = 63.8

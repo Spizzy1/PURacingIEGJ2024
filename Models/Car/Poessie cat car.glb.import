@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b5y10bj7f6t7w"
-path="res://.godot/imported/Poessie cat car.glb-6209b7b86b88fe3b2795b2c7d654beac.scn"
+path="res://.godot/imported/Poessie cat car.glb-a3b0a160abe5754a381c8570764c96bf.scn"
 
 [deps]
 
-source_file="res://Models/Poessie cat car.glb"
-dest_files=["res://.godot/imported/Poessie cat car.glb-6209b7b86b88fe3b2795b2c7d654beac.scn"]
+source_file="res://Models/Car/Poessie cat car.glb"
+dest_files=["res://.godot/imported/Poessie cat car.glb-a3b0a160abe5754a381c8570764c96bf.scn"]
 
 [params]
 

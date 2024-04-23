@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uoyumumx56f1"
-path.s3tc="res://.godot/imported/Poessie cat car_DefaultMaterial_BaseColor.png-90e2c0b472dc5855bfc809fe93e8d014.s3tc.ctex"
+uid="uid://doeaqgfiw0wed"
+path.s3tc="res://.godot/imported/defaultMat_Normal_OpenGL.png-ba393125d887978df7582983b530c95d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e2d69a70ed56462ed3d867ac8e133cc7"
-}
 
 [deps]
 
-source_file="res://Models/Poessie cat car_DefaultMaterial_BaseColor.png"
-dest_files=["res://.godot/imported/Poessie cat car_DefaultMaterial_BaseColor.png-90e2c0b472dc5855bfc809fe93e8d014.s3tc.ctex"]
+source_file="res://Models/Rat/defaultMat_Normal_OpenGL.png"
+dest_files=["res://.godot/imported/defaultMat_Normal_OpenGL.png-ba393125d887978df7582983b530c95d.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Models/Rat/defaultMat_Normal_OpenGL.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
