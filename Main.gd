@@ -13,7 +13,8 @@ func connect_player():
 	add_child(client_requester)
 	var UI = get_node_or_null("OnlineUI")
 	if UI:
-		UI.visible = true
+		UI.get_node("VBoxContainer").visible = true
+		UI.get_node("Load").visible = false
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv3rvxnyfi1qv"
-path.s3tc="res://.godot/imported/RaceTrackBlockout3_BoomBladeren_diffuse.png-58f952ff0e54a906e31c8fc7c6985b0e.s3tc.ctex"
+uid="uid://dxpp5p4ukhgng"
+path.s3tc="res://.godot/imported/RaceTrack5_FrisbeeColor.png-a0e649866d0452222d672bdda28c2b77.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "36bdad2bfde1490f44fa6f34081e2901"
+}
 
 [deps]
 
-source_file="res://RaceTrackBlockout3_BoomBladeren_diffuse.png"
-dest_files=["res://.godot/imported/RaceTrackBlockout3_BoomBladeren_diffuse.png-58f952ff0e54a906e31c8fc7c6985b0e.s3tc.ctex"]
+source_file="res://Models/Racetracks/RaceTrack5_FrisbeeColor.png"
+dest_files=["res://.godot/imported/RaceTrack5_FrisbeeColor.png-a0e649866d0452222d672bdda28c2b77.s3tc.ctex"]
 
 [params]
 
