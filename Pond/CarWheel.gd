@@ -17,4 +17,5 @@ func _process(delta):
 	
 	engine_force = car_body.engine_force;
 	steering = car_body.steering * steering_multiplier;
+	brake = car_body.brake
 	pass

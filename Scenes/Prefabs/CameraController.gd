@@ -1,24 +1,13 @@
-extends Node
+extends Node3D
 
-
-var PU_dict = ["", "",]
-
-
-
+var prev_parent_pos:Vector2 = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
 	pass
-
-
-func _input(event):
-
-		pass
-		

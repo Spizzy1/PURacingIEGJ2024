@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0vw75u1usdkt"]
+[gd_scene load_steps=11 format=3 uid="uid://d0vw75u1usdkt"]
 
 [ext_resource type="Script" path="res://Pond/CarMovement.gd" id="1_80cua"]
 [ext_resource type="Script" path="res://Pond/CarWheel.gd" id="2_rx08v"]
 [ext_resource type="Texture2D" uid="uid://bfhdp02cpouae" path="res://Pond/tex_DebugGrid.svg" id="3_os1p4"]
-[ext_resource type="PackedScene" uid="uid://bb3bqeooprluo" path="res://Models/Poessie cat car.glb" id="3_w0yr7"]
-[ext_resource type="PackedScene" uid="uid://la51e7vf3kbc" path="res://Pond/MouseModel_Blockout.glb" id="4_a2q7a"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/CameraController.gd" id="4_evmu0"]
+[ext_resource type="PackedScene" uid="uid://jee4kuq8t8wr" path="res://Models/Rat/FinishedRat.glb" id="4_k1jju"]
+[ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="5_grn2j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_euden"]
 rough = true
@@ -24,6 +25,7 @@ size = Vector3(2.08008, 0.57922, 2.1547)
 
 [node name="Vehicle Body" type="VehicleBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19804, -0.118317)
+mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_euden")
 constant_force = Vector3(0, -100, 0)
 script = ExtResource("1_80cua")
@@ -31,9 +33,9 @@ engine_max = 80.0
 steering_max_deg = 20.0
 
 [node name="Wheel_1" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.840674, 0.853088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.756133, 0.808495)
 use_as_steering = true
-wheel_radius = 0.25
+wheel_radius = 0.2
 suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -41,12 +43,13 @@ script = ExtResource("2_rx08v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_1"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_2" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, 0.853088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.756133, 0.808495)
 use_as_steering = true
-wheel_radius = 0.25
+wheel_radius = 0.2
 suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -54,12 +57,13 @@ script = ExtResource("2_rx08v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_2"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_3" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.840674, -1.1105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.762183, -0.80509)
 use_as_traction = true
-wheel_radius = 0.25
+wheel_radius = 0.2
 suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -68,12 +72,13 @@ steering_multiplier = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_3"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_4" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.840674, -1.11011)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.762183, -0.8047)
 use_as_traction = true
-wheel_radius = 0.25
+wheel_radius = 0.2
 suspension_stiffness = 50.0
 damping_compression = 1.9
 damping_relaxation = 2.0
@@ -82,18 +87,38 @@ steering_multiplier = 0.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_4"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("CylinderMesh_8twye")
-
-[node name="Car Model" parent="." instance=ExtResource("3_w0yr7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.972798, 0)
-
-[node name="Mouse Model" parent="Car Model" instance=ExtResource("4_a2q7a")]
-transform = Transform3D(6.04543e-08, 0, 1.00207, 0, 0.539942, 0, -0.461011, 0, 1.31405e-07, -0.118317, 1.58496, -0.0429958)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.983523, 0, 0, 0, 0.983523, 0, 0, 0, 0.983523, 0, -0.42832, 0.047067)
 shape = SubResource("BoxShape3D_ur125")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
+[node name="Camera Pivot" type="Node3D" parent="."]
+script = ExtResource("4_evmu0")
+
+[node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
+transform = Transform3D(-1, -4.9738e-14, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
 fov = 63.8
+
+[node name="FinishedRat" parent="." instance=ExtResource("4_k1jju")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0.467684, -0.0125276)
+
+[node name="Poessie cat car" parent="." instance=ExtResource("5_grn2j")]
+transform = Transform3D(7.21005e-08, 0, 0.955, 0, 0.955, 0, -0.955, 0, 7.21005e-08, 0, -1.15262, 0)
+
+[node name="Wheel_5" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.525567, 2.55872)
+use_as_traction = true
+wheel_radius = 0.25
+suspension_stiffness = 50.0
+damping_compression = 1.9
+damping_relaxation = 2.0
+script = ExtResource("2_rx08v")
+steering_multiplier = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_5"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("CylinderMesh_8twye")
+skeleton = NodePath("../../Wheel_5")
