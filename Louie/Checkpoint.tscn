@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckf4twg6cepdb"]
+
+[ext_resource type="Script" path="res://Louie/CheckpointReal.gd" id="1_6c57j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bia3"]
+
+[node name="Checkpoint" type="Area3D"]
+script = ExtResource("1_6c57j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2bia3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
