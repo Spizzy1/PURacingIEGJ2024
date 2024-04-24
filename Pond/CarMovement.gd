@@ -57,7 +57,7 @@ func _process(delta):
 		pass
 	#print(str(rotation.x) + " and " + str(rotation.z))
 
-	if isbreak and timer.is_stopped():
+	if Input.is_action_pressed("Flip") and is_main and timer.is_stopped():
 		timer.start()
 		rotation.x = 0
 		rotation.z = 0
