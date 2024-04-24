@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://s8qumlnpsjtx"]
+[gd_scene load_steps=8 format=3 uid="uid://s8qumlnpsjtx"]
 
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_dsmju"]
 [ext_resource type="Script" path="res://Isak/Tracker.gd" id="2_lgjir"]
