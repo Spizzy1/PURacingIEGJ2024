@@ -34,12 +34,11 @@ func sync_position(player, movement, rotation,position, brake):
 
 func update_room():
 	var rooml = []
-	print("Updating rooms")
 	var room = get_parent().get_node_or_null(room_name)
 	if room:
 		for participant in room.participants:
 			rooml.append(participant.id)
-			_update_room.rpc_id(client.id, rooml)
+		_update_room.rpc_id(client.id, rooml)
 	pass
 
 @rpc("authority")
