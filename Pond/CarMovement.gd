@@ -32,7 +32,7 @@ func _ready():
 func _process(delta):
 	
 	
-	if is_main:
+	if is_main and RaceGlobal.can_drive:
 		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
 		isbreak = Input.is_action_pressed("Break")
 	engine_force = wasd.y*engine_max
