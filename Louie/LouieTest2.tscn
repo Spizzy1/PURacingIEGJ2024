@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dq2lvm2wbj8vo"]
+[gd_scene load_steps=23 format=3 uid="uid://dq2lvm2wbj8vo"]
 
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_4t57f"]
 [ext_resource type="PackedScene" uid="uid://bs2vogjyo6dna" path="res://Tracks/racetrack2.tscn" id="2_ym7ev"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="8_jeep8"]
 [ext_resource type="Script" path="res://Isak/MapManager.gd" id="9_xatao"]
 [ext_resource type="AudioStream" uid="uid://dts7qfla78ane" path="res://Music/Aurgtphappy.wav" id="10_jsgbw"]
+[ext_resource type="Script" path="res://Louie/TimeTEst.gd" id="12_1ypdc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
@@ -114,6 +115,9 @@ script = ExtResource("8_jeep8")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jsgbw")
 autoplay = true
+
+[node name="TimeTEst" type="Node3D" parent="."]
+script = ExtResource("12_1ypdc")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
