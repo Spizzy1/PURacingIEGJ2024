@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_dsmju"]
 [ext_resource type="Script" path="res://Isak/Tracker.gd" id="2_lgjir"]
-[ext_resource type="Shader" path="res://Shaders/distortionReal.gdshader" id="3_b0x2u"]
-[ext_resource type="Script" path="res://Shaders/DistortionShader.gd" id="4_ie328"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_spctk"]
 
@@ -100,5 +98,3 @@ script = ExtResource("4_ie328")
 [node name="ShaderTimer" type="Timer" parent="ColorRect"]
 one_shot = true
 
-[connection signal="pressed" from="Button" to="Tracker" method="reset"]
-[connection signal="timeout" from="ColorRect/ShaderTimer" to="ColorRect" method="_on_timer_timeout"]

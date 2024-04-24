@@ -32,7 +32,7 @@ func _ready():
 func _process(delta):
 	
 	
-	if is_main:
+	if is_main && RaceGlobal.can_drive:
 		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
 		isbreak = Input.is_action_pressed("Break")
 	engine_force = wasd.y*engine_max
@@ -55,7 +55,7 @@ func _process(delta):
 		pass
 	#print(str(rotation.x) + " and " + str(rotation.z))
 
-	if isbreak and timer.is_stopped():
+	if Input.is_action_pressed("Flip") and timer.is_stopped():
 		timer.start()
 		rotation.x = 0
 		rotation.z = 0

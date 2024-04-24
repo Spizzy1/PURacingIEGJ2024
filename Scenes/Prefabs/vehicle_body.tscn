@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0vw75u1usdkt"]
+[gd_scene load_steps=12 format=3 uid="uid://d0vw75u1usdkt"]
 
 [ext_resource type="Script" path="res://Pond/CarMovement.gd" id="1_80cua"]
 [ext_resource type="Script" path="res://Pond/CarWheel.gd" id="2_rx08v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Prefabs/CameraController.gd" id="4_evmu0"]
 [ext_resource type="PackedScene" uid="uid://jee4kuq8t8wr" path="res://Models/Rat/FinishedRat.glb" id="4_k1jju"]
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="5_grn2j"]
+[ext_resource type="Script" path="res://Louie/CheckpointTracker.gd" id="7_g1kcb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_euden"]
 rough = true
@@ -21,14 +22,12 @@ height = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ur125"]
 custom_solver_bias = 0.1
-size = Vector3(2.08008, 2.94488, 2.1547)
+size = Vector3(2.08008, 0.57922, 2.1547)
 
 [node name="Vehicle Body" type="VehicleBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19804, -0.118317)
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_euden")
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, -1, 0)
 constant_force = Vector3(0, -100, 0)
 script = ExtResource("1_80cua")
 engine_max = 80.0
@@ -97,7 +96,7 @@ visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.983523, 0, 0, 0, 0.983523, 0, 0, 0, 0.983523, 0, 0.735022, 0.047067)
+transform = Transform3D(0.983523, 0, 0, 0, 0.983523, 0, 0, 0, 0.983523, 0, -0.42832, 0.047067)
 shape = SubResource("BoxShape3D_ur125")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
@@ -132,8 +131,10 @@ script = ExtResource("4_evmu0")
 [node name="Camera3D" type="Camera3D" parent="Camera Controller"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 doppler_tracking = 2
-current = true
 fov = 63.8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CheckpointTracker" type="Node3D" parent="."]
+script = ExtResource("7_g1kcb")
