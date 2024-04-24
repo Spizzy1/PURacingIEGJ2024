@@ -10,5 +10,5 @@ func _ready():
 func _process(delta):
 	
 
-	Engine.set_time_scale(1/Time.delta)
+	#Engine.set_time_scale(1/Time.delta)
 	pass
