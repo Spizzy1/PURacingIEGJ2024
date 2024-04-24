@@ -1,6 +1,6 @@
 extends Node3D
 
-var id
+var id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
