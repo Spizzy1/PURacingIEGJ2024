@@ -44,5 +44,23 @@ func _update_room(players):
 	pass
 
 @rpc("authority", "call_remote", "reliable")
-func start_game(code):
+func start_game(index, plr_length):
+	var Room = get_parent().get_node_or_null("RoomUI")
+	if Room:
+		Room.queue_free()
+	var scene = preload("res://Isak/MultiplayerTest.tscn")
+	var instance = scene.instantiate()
+	get_parent().add_child(instance)
+	var startpos = Vector3(-14.923, 2.138, 44.615)
+	for i in range(plr_length):
+		var car = preload("res://Scenes/Prefabs/vehicle_body.tscn")
+		var car_instance = car.instantiate()
+		get_parent().add_child(car_instance)
+		car_instance.name = str(i)
+		car_instance.position = startpos + (i*Vector3(0,0,2))
+		if i != index:
+			car_instance.is_main = false
+	var cam : Camera3D = get_parent().get_node(str(index)).get_node("Camera Controller").get_node("Camera3D") 
+	cam.make_current()
+	
 	pass

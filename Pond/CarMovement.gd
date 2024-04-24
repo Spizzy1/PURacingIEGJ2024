@@ -21,9 +21,10 @@ var timer:Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = get_node("Timer")
+	timer.wait_time = 2
 	for i in range(0,4):
 		wheels.append(get_node("./Wheel_"+str(i+1)))
-		print(wheels[i])
+		#print(wheels[i])
 	pass # Replace with function body.
 
 
@@ -40,15 +41,16 @@ func _process(delta):
 		brake = brake_force
 	else:
 		brake = 0
-	print(str(rotation.x) + " and " + str(rotation.z))
+	#print(str(rotation.x) + " and " + str(rotation.z))
 	#rotation.x = (rotation.x * angular_correction_amount)
 	#rotation.z = (rotation.z * angular_correction_amount)
-	print(str(rotation.x) + " and " + str(rotation.z))
+	#print(str(rotation.x) + " and " + str(rotation.z))
 
-	if isbreak:
+	if isbreak and timer.is_stopped():
+		timer.start()
 		rotation.x = 0
 		rotation.z = 0
-	
+		position += Vector3(0, 2, 0)
 	pass
 
 func _physics_process(delta):

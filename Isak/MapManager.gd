@@ -3,7 +3,7 @@ extends Node3D
 var current_map = 0
 
 @onready
-var maps = $"/root/Node3D/Maps".get_children()
+var maps = $"/root/Main/Node3D/Maps".get_children()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for map in range(maps.size()):

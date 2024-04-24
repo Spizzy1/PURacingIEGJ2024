@@ -34,7 +34,10 @@ func sync_position(player, movement,position, brake):
 
 func update_room():
 	var rooml = []
-	for participant in get_parent().get_node(room_name).participants:
+	var room = get_parent().get_node_or_null(room_name)
+	if not room:
+		pass
+	for participant in room.participants:
 		rooml.append(participant.id)
 	_update_room.rpc_id(client.id, rooml)
 	pass
@@ -55,8 +58,9 @@ func start_game(index, plr_length):
 		var room = get_parent().get_node_or_null(room_name)
 		if room:
 			for participant in room.participants:
-				get_parent().get_node(str(participant.id)).start_game.rpc_id(str(participant.id), curr_index, len(room.participants))
+				get_parent().get_node(str(participant.id)).start_game.rpc_id(participant.id, curr_index, len(room.participants))
 				curr_index += 1 
+				
 	pass
 
 # Called when the node enters the scene tree for the first time.
