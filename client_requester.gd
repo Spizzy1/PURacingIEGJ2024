@@ -1,9 +1,13 @@
 extends Node
 
 var maxplr = 0
+var has_won = false
 
 @rpc("authority")
 func win(index):
+	if not has_won:
+		pass
+	has_won = true
 	var winscreen_scene = preload("res://Isak/winscreen.tscn")
 	var instance = winscreen_scene.instantiate()
 	if get_parent().get_node(str(index)).is_main:

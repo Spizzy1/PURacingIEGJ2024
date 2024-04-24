@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpjim22exy04t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2qtog"]
-font_size = 128
+font_size = 64
 
 [node name="Winscreen" type="Control"]
 layout_mode = 3

@@ -25,6 +25,12 @@ func _on_body_entered(body):
 			player_entered.emit()
 			body.get_node("CheckpointTracker").curCheckP=0
 			body.get_node("CheckpointTracker").curLap+=1
+			
+			if totalLaps == body.get_node("CheckpointTracker").curLap:
+				var connector = null
+				connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+				if connector:
+					connector.win.rpc_id(1, str(get_parent().name))
 	pass # Replace with function body.
 
 
