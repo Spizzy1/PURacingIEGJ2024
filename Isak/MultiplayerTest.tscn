@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi1v725teh335"]
+[gd_scene load_steps=10 format=3 uid="uid://bi1v725teh335"]
 
 [ext_resource type="PackedScene" uid="uid://cb1so1gaenqnh" path="res://Tracks/racetrack1-3.tscn" id="1_3pcnu"]
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_qgvhv"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="3_rgpmq"]
 [ext_resource type="PackedScene" uid="uid://s8qumlnpsjtx" path="res://Isak/Timer.tscn" id="4_gxtme"]
 [ext_resource type="Script" path="res://Isak/MapManager.gd" id="8_f24es"]
-[ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="9_s1oqv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
@@ -50,9 +49,6 @@ shape = SubResource("BoxShape3D_v25g6")
 
 [node name="MapManager" type="Node3D" parent="."]
 script = ExtResource("8_f24es")
-
-[node name="ReloadManager" type="Node3D" parent="."]
-script = ExtResource("9_s1oqv")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]

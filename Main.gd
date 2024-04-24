@@ -1,5 +1,6 @@
 extends Node3D
 
+var id
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,7 @@ func connect_player():
 	print("Creating requester")
 	var client_requester = preload("res://client_requester.tscn").instantiate()
 	client_requester.name = str(multiplayer.get_unique_id())
+	id = str(client_requester.name)
 	add_child(client_requester)
 	var UI = get_node_or_null("OnlineUI")
 	if UI:

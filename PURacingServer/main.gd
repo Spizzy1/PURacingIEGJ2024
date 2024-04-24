@@ -125,9 +125,9 @@ func join_room(room : Room, connector, code):
 	room.participants.append(connector.client)
 	connector.room_name = str(room.name)
 	connector.room_host = false
+	connector.join_custom_room.rpc_id(int(str(connector.name)), code, room.max_players)
 	for participant in room.participants:
 		var cconector = get_node(str(participant.id))
-		cconector.join_custom_room.rpc_id(int(str(cconector.name)), code, room.max_players)
 		cconector.update_room()
 	pass
 

@@ -12,7 +12,6 @@ func join_custom_room(code, max_players):
 	var scene = preload("res://RoomUI.tscn")
 	var instance = scene.instantiate()
 	get_parent().add_child(instance)
-
 	pass
 	
 @rpc("authority", "call_remote", "reliable")
@@ -31,8 +30,16 @@ func create_custom_room(code, max_players):
 func leave_room():
 	pass
 
-@rpc("authority", "unreliable")
-func sync_position(player, movement,position, brake):
+@rpc("any_peer", "call_remote", "unreliable", 1)
+func sync_position(player, movement, rotation,position, brake):
+	var node = get_parent().get_node_or_null(str(player))
+	
+	if node && not node.is_main:
+		node.position = position
+		node.wasd = movement
+		node.isbreak = brake
+		node.rotation = rotation
+	
 	pass
 
 @rpc("authority", "call_remote", "reliable")

@@ -5,7 +5,8 @@ var element_scene = preload("res://Isak/TimerContent.tscn")
 var laps = 0
 var current_element
 
-
+var timer = 0
+var start = false
 @onready
 var container = get_parent().get_node("PanelContainer/TableContainer")
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +34,14 @@ func reset():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not start:
+		timer+=delta
+		get_parent().get_node("Startimer").text = str(floor(timer))
+		if timer > 3:
+			start = true
+			get_parent().get_node("Startimer").visible = false
+			reset()
+		
 	if current_element:
 		var diff = Time.get_ticks_msec() - origin
 		var minutes = int(diff / 60 / 1000)

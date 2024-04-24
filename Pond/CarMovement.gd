@@ -11,7 +11,7 @@ var brake_force: float = 50
 
 var is_main = true
 
-var wasd
+var wasd = Vector3(0,0,0)
 var isbreak
 
 @export
@@ -34,10 +34,10 @@ func _process(delta):
 	
 	if is_main:
 		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
-		isbreak = Input.is_action_just_pressed("Flip")
+		isbreak = Input.is_action_pressed("Break")
 	engine_force = wasd.y*engine_max
 	steering = deg_to_rad(wasd.x*steering_max_deg* -1)
-	if Input.is_action_pressed("Break"):
+	if isbreak:
 		brake = brake_force
 	else:
 		brake = 0
@@ -45,8 +45,12 @@ func _process(delta):
 	#rotation.x = (rotation.x * angular_correction_amount)
 	#rotation.z = (rotation.z * angular_correction_amount)
 	print(str(rotation.x) + " and " + str(rotation.z))
-
-	if isbreak and timer.is_stopped():
+	var connector = get_parent().get_node_or_null(str(get_parent().id))
+	if connector and is_main:
+		print("Cound connector")
+		connector.sync_position.rpc_id(1, name, wasd, rotation, position, isbreak)
+		pass
+	if Input.is_action_just_pressed("Flip") and timer.is_stopped():
 		timer.start()
 		rotation.x = 0
 		rotation.z = 0

@@ -18,13 +18,13 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.name != "Vehicle Body":
+	if body is VehicleBody3D:
 		pass
 	var chkPTrack = null
-	if body.name == "Vehicle Body":
+	if body is VehicleBody3D:
 		chkPTrack = body.get_node("CheckpointTracker")
 
-	if body.name == "Vehicle Body" && index > chkPTrack.curCheckP:
+	if body is VehicleBody3D && index > chkPTrack.curCheckP:
 		print("test")
 		chkPTrack.chkPntPass(index)
 		#player_entered.emit(index)

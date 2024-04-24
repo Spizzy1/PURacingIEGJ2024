@@ -24,22 +24,21 @@ func create_custom_room(code, max_players):
 	pass
 
 @rpc("authority", "unreliable")
-func sync_position(player, movement,position, brake):
+func sync_position(player, movement, rotation,position, brake):
 	if room_name != "":
 		var room = get_parent().get_node_or_null(room_name)
 		if room:
 			for participant in room.participants:
-				sync_position.rpc_id(player, position, brake)
+				get_parent().get_node(str(participant.id)).sync_position.rpc_id(participant.id, player, movement , rotation, position, brake)
 	pass
 
 func update_room():
 	var rooml = []
 	var room = get_parent().get_node_or_null(room_name)
-	if not room:
-		pass
-	for participant in room.participants:
-		rooml.append(participant.id)
-	_update_room.rpc_id(client.id, rooml)
+	if room:
+		for participant in room.participants:
+			rooml.append(participant.id)
+		_update_room.rpc_id(client.id, rooml)
 	pass
 
 @rpc("authority")
