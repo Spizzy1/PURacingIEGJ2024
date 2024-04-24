@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://dq2lvm2wbj8vo"]
+[gd_scene load_steps=23 format=3 uid="uid://dq2lvm2wbj8vo"]
 
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_4t57f"]
+[ext_resource type="PackedScene" uid="uid://bs2vogjyo6dna" path="res://Tracks/racetrack2.tscn" id="2_ym7ev"]
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_2mvx4"]
 [ext_resource type="PackedScene" uid="uid://cb1so1gaenqnh" path="res://Tracks/racetrack1-3.tscn" id="3_ja41c"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="4_rdvnn"]
@@ -10,6 +11,7 @@
 [ext_resource type="Script" path="res://Louie/ReloadManager.gd" id="8_jeep8"]
 [ext_resource type="Script" path="res://Isak/MapManager.gd" id="9_xatao"]
 [ext_resource type="AudioStream" uid="uid://dts7qfla78ane" path="res://Music/Aurgtphappy.wav" id="10_jsgbw"]
+[ext_resource type="Script" path="res://Louie/TimeTEst.gd" id="12_1ypdc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r70bb"]
 
@@ -67,6 +69,9 @@ environment = SubResource("Environment_n44sb")
 [node name="RaceTrack7" parent="Maps" instance=ExtResource("3_ja41c")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
+[node name="RaceTrackLVL2_4" parent="Maps" instance=ExtResource("2_ym7ev")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.728, -493.5)
+
 [node name="RaceTrack8" parent="Maps" instance=ExtResource("3_ja41c")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -110,6 +115,9 @@ script = ExtResource("8_jeep8")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jsgbw")
 autoplay = true
+
+[node name="TimeTEst" type="Node3D" parent="."]
+script = ExtResource("12_1ypdc")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]

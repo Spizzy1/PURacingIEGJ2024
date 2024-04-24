@@ -1,6 +1,6 @@
 extends MarginContainer
 
-var singleplayer_scene = preload("res://LouieTestScene.tscn")
+var singleplayer_scene = preload("res://Louie/LouieTest2.tscn")
 var settings_scene = preload("res://SettingsMenu.tscn")
 var multiplayer_scene = preload("res://OnlineUI.tscn")
 

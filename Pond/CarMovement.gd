@@ -46,7 +46,9 @@ func _process(delta):
 	#rotation.z = (rotation.z * angular_correction_amount)
 
 	print(str(rotation.x) + " and " + str(rotation.z))
-	var connector = get_parent().get_node_or_null(str(get_parent().id))
+	var connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+	
+	#get_parent().get_node_or_null(str(get_parent().id))
 	if connector and is_main:
 		print("Cound connector")
 		connector.sync_position.rpc_id(1, name, wasd, rotation, position, isbreak)
