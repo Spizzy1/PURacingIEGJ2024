@@ -45,7 +45,7 @@ func _process(delta):
 	#rotation.x = (rotation.x * angular_correction_amount)
 	#rotation.z = (rotation.z * angular_correction_amount)
 
-	print(str(rotation.x) + " and " + str(rotation.z))
+	#print(str(rotation.x) + " and " + str(rotation.z))
 	var connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
 	
 	#get_parent().get_node_or_null(str(get_parent().id))
