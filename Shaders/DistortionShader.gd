@@ -13,7 +13,7 @@ func _ready():
 	print(shader_timer)
 
 
-	shader_timer.start()
+	#shader_timer.start()
 
 
 	pass # Replace with function body.

@@ -4,12 +4,13 @@ var maxplr = 0
 
 @rpc("authority")
 func win(index):
+	var winscreen_scene = preload("res://Isak/winscreen.tscn")
+	var instance = winscreen_scene.instantiate()
 	if get_parent().get_node(str(index)).is_main:
-		pass
-		#win
+		instance.get_node("CanvasLayer/Label").text = "YOU WIN!!!"
 	else:
-		pass
-		#lose
+		instance.get_node("CanvasLayer/Label").text = "YOU LOOOOOOOSEEE!!!"
+	get_parent().add_child(instance)
 	pass
 
 @rpc("authority", "call_remote", "reliable")

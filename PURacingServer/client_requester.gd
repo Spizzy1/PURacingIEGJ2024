@@ -47,7 +47,7 @@ func win(index):
 		var room = get_parent().get_node_or_null(room_name)
 		if room:
 			for participant in room.participants:
-				get_parent().get_node(str(participant.id)).sync_position.rpc_id(participant.id, index)
+				get_parent().get_node(str(participant.id)).win.rpc_id(participant.id, index)
 	pass
 
 @rpc("authority")

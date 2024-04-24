@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bi1v725teh335"]
 
 [ext_resource type="PackedScene" uid="uid://cb1so1gaenqnh" path="res://Tracks/racetrack1-3.tscn" id="1_3pcnu"]
-[ext_resource type="PackedScene" uid="uid://ctw68m7t1ygwl" path="res://Tracks/racetrack2.tscn" id="2_fha33"]
+[ext_resource type="PackedScene" uid="uid://bs2vogjyo6dna" path="res://Tracks/racetrack2.tscn" id="2_fha33"]
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_qgvhv"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="3_rgpmq"]
 [ext_resource type="PackedScene" uid="uid://s8qumlnpsjtx" path="res://Isak/Timer.tscn" id="4_gxtme"]
@@ -55,6 +55,8 @@ one_shot = true
 
 [node name="MapManager" type="Node3D" parent="."]
 script = ExtResource("8_f24es")
+
+[node name="WinManager" type="Node3D" parent="."]
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
