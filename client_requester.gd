@@ -64,6 +64,7 @@ func start_game(index, plr_length):
 		var car_instance = car.instantiate()
 		get_parent().add_child(car_instance)
 		car_instance.name = str(i)
+		car_instance.rotation = Vector3(0,PI/2, 0)
 		car_instance.position = startpos + (i*Vector3(0,0,2))
 		if i != index:
 			car_instance.is_main = false

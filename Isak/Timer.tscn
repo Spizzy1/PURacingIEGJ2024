@@ -1,23 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://s8qumlnpsjtx"]
+[gd_scene load_steps=5 format=3 uid="uid://s8qumlnpsjtx"]
 
 [ext_resource type="Script" path="res://addons/table_container/table_container.gd" id="1_dsmju"]
 [ext_resource type="Script" path="res://Isak/Tracker.gd" id="2_lgjir"]
-[ext_resource type="Shader" path="res://Shaders/distortionReal.gdshader" id="3_b0x2u"]
-[ext_resource type="Script" path="res://Shaders/DistortionShader.gd" id="4_ie328"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_spctk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_glujp"]
 font_size = 128
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6rv2"]
-shader = ExtResource("3_b0x2u")
-shader_parameter/strength = 0.08
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/radius = 0.25
-shader_parameter/aberration = 0.425
-shader_parameter/width = 0.1
-shader_parameter/feather = 0.135
 
 [node name="Timer" type="Control"]
 layout_mode = 3
@@ -90,15 +79,4 @@ text = "3"
 label_settings = SubResource("LabelSettings_glujp")
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_g6rv2")
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-script = ExtResource("4_ie328")
-
-[node name="ShaderTimer" type="Timer" parent="ColorRect"]
-one_shot = true
-
 [connection signal="pressed" from="Button" to="Tracker" method="reset"]
-[connection signal="timeout" from="ColorRect/ShaderTimer" to="ColorRect" method="_on_timer_timeout"]

@@ -1,5 +1,6 @@
-extends Node3D
+extends Node
 
+var can_drive = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,7 +9,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-
-	#Engine.set_time_scale(1/Time.delta)
 	pass
