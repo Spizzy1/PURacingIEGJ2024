@@ -41,6 +41,15 @@ func update_room():
 		_update_room.rpc_id(client.id, rooml)
 	pass
 
+@rpc("authority", "reliable")
+func win(index):
+	if room_name != "":
+		var room = get_parent().get_node_or_null(room_name)
+		if room:
+			for participant in room.participants:
+				get_parent().get_node(str(participant.id)).sync_position.rpc_id(participant.id, index)
+	pass
+
 @rpc("authority")
 func leave_room():
 	get_parent().leave_room(self)

@@ -1,6 +1,9 @@
 extends Node
 
 var curCheckP = 0
+
+var curLap = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
@@ -17,6 +20,11 @@ func chkPntPass(index):
 		print("index: "+str(index))
 		curCheckP+=1
 		print("current checkpoint: "+str(curCheckP))
+		var connector = null
+		connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+		get_parent().get_node_or_null(str(get_parent().id))
+		if connector:
+			connector.win.rpc_id(1, str(get_parent().name))
 	pass
 
 

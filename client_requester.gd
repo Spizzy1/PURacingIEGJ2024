@@ -2,6 +2,16 @@ extends Node
 
 var maxplr = 0
 
+@rpc("authority")
+func win(index):
+	if get_parent().get_node(str(index)).is_main:
+		pass
+		#win
+	else:
+		pass
+		#lose
+	pass
+
 @rpc("authority", "call_remote", "reliable")
 func join_custom_room(code, max_players):
 	var onlineui = get_parent().get_node_or_null("OnlineUI")

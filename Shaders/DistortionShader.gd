@@ -23,11 +23,9 @@ func _ready():
 func _process(delta):
 	#print(shader_timer.time_left)
 	if !shader_timer.is_stopped():
-		print("shader should activate")
-		print(shader_timer.time_left)
-		shader_value = clamp(shader_value, (1-shader_timer.time_left),(1-shader_timer.time_left))
-		print("Shader value: " + str(shader_value))
 		
+		shader_value = clamp(shader_value, (1-shader_timer.time_left),(1-shader_timer.time_left))
+
 		material.set_shader_parameter("radius", shader_value)
 	#print(clamp(shader_value, (1-shader_timer.time_left),(1-shader_timer.time_left)))
 	pass
