@@ -59,6 +59,9 @@ func _process(delta):
 		rotation.z = 0
 		position += Vector3(0, 2, 0)
 	pass
+	
+	#rotation_degrees.x = clamp(rotation_degrees.x, deg_to_rad(-50),deg_to_rad(50))
+	#rotation_degrees.z = clamp(rotation_degrees.z, deg_to_rad(-50),deg_to_rad(50))
 
 func _physics_process(delta):
 	$"Camera Controller/Camera3D".fov =  linear_velocity.length()*2 + 50
