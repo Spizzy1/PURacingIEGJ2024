@@ -48,7 +48,7 @@ func _process(delta):
 	print(str(rotation.x) + " and " + str(rotation.z))
 	
 	var connector = null
-	#connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+	connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
 	
 	#get_parent().get_node_or_null(str(get_parent().id))
 	if connector and is_main:
