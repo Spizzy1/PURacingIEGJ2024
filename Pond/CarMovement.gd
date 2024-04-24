@@ -32,7 +32,7 @@ func _ready():
 func _process(delta):
 	
 	
-	if is_main:
+	if is_main and RaceGlobal.can_drive:
 		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
 		isbreak = Input.is_action_pressed("Break")
 	engine_force = wasd.y*engine_max
@@ -46,7 +46,9 @@ func _process(delta):
 	#rotation.z = (rotation.z * angular_correction_amount)
 
 	print(str(rotation.x) + " and " + str(rotation.z))
-	var connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+	
+	var connector = null
+	#connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
 	
 	#get_parent().get_node_or_null(str(get_parent().id))
 	if connector and is_main:
