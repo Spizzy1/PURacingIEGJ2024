@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SettingsGlobal="*res://SettingsGlobal.gd"
-RaceGlobal="*res://RaceGlobal.gd"
 
 [dotnet]
 

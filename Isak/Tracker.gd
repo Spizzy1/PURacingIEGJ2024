@@ -36,14 +36,11 @@ func reset():
 func _process(delta):
 	if not start:
 		timer+=delta
-		get_parent().get_node("Startimer").text = str(ceil(3-timer))
+		get_parent().get_node("Startimer").text = str(floor(timer))
 		if timer > 3:
-			RaceGlobal.can_drive = true
 			start = true
 			get_parent().get_node("Startimer").visible = false
 			reset()
-		else:
-			RaceGlobal.can_drive = false
 		
 	if current_element:
 		var diff = Time.get_ticks_msec() - origin
