@@ -14,7 +14,7 @@ font_size = 128
 shader = ExtResource("3_b0x2u")
 shader_parameter/strength = 0.08
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/radius = 0.0
+shader_parameter/radius = 0.25
 shader_parameter/aberration = 0.425
 shader_parameter/width = 0.1
 shader_parameter/feather = 0.135
@@ -98,6 +98,7 @@ offset_bottom = 1080.0
 script = ExtResource("4_ie328")
 
 [node name="ShaderTimer" type="Timer" parent="ColorRect"]
+one_shot = true
 
 [connection signal="pressed" from="Button" to="Tracker" method="reset"]
 [connection signal="timeout" from="ColorRect/ShaderTimer" to="ColorRect" method="_on_timer_timeout"]
