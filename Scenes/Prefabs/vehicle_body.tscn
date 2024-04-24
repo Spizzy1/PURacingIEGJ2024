@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0vw75u1usdkt"]
+[gd_scene load_steps=11 format=3 uid="uid://d0vw75u1usdkt"]
 
 [ext_resource type="Script" path="res://Pond/CarMovement.gd" id="1_80cua"]
 [ext_resource type="Script" path="res://Pond/CarWheel.gd" id="2_rx08v"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Scenes/Prefabs/CameraController.gd" id="4_evmu0"]
 [ext_resource type="PackedScene" uid="uid://jee4kuq8t8wr" path="res://Models/Rat/FinishedRat.glb" id="4_k1jju"]
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="5_grn2j"]
-[ext_resource type="Script" path="res://Louie/CheckpointTracker.gd" id="7_vqt0t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_euden"]
 rough = true
@@ -131,11 +130,7 @@ script = ExtResource("4_evmu0")
 [node name="Camera3D" type="Camera3D" parent="Camera Controller"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
 doppler_tracking = 2
-current = true
 fov = 63.8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[node name="CheckpointTracker" type="Node3D" parent="."]
-script = ExtResource("7_vqt0t")

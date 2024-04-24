@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dq2lvm2wbj8vo"]
 
 [ext_resource type="PackedScene" uid="uid://b5y10bj7f6t7w" path="res://Models/Car/Poessie cat car.glb" id="2_4t57f"]
-[ext_resource type="PackedScene" uid="uid://bs2vogjyo6dna" path="res://Tracks/racetrack2.tscn" id="2_ym7ev"]
+[ext_resource type="PackedScene" uid="uid://ctw68m7t1ygwl" path="res://Tracks/racetrack2.tscn" id="2_ym7ev"]
 [ext_resource type="PackedScene" uid="uid://d0vw75u1usdkt" path="res://Scenes/Prefabs/vehicle_body.tscn" id="3_2mvx4"]
 [ext_resource type="PackedScene" uid="uid://cb1so1gaenqnh" path="res://Tracks/racetrack1-3.tscn" id="3_ja41c"]
 [ext_resource type="Script" path="res://Isak/Goal.gd" id="4_rdvnn"]
@@ -81,6 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -506.517, 243.25, 308.453)
 [node name="Goal" type="Area3D" parent="."]
 script = ExtResource("4_rdvnn")
 totalCheckpoints = 2
+totalLaps = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.01901, 54.2596)
@@ -121,6 +122,7 @@ script = ExtResource("12_1ypdc")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
+[connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/ColorRect" method="_on_goal_player_entered"]
 [connection signal="player_entered" from="Goal" to="MapManager" method="switch_map"]
 
 [editable path="CanvasLayer/Timer"]

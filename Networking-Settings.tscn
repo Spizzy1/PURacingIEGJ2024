@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Port.gd" id="2_s2pn0"]
 
 [node name="Networking-settings" type="VBoxContainer"]
+alignment = 2
 
 [node name="IP-Header" type="Label" parent="."]
 layout_mode = 2
