@@ -100,3 +100,4 @@ script = ExtResource("4_gakms")
 [node name="ShaderTimer" type="Timer" parent="ColorRect"]
 
 [connection signal="pressed" from="Button" to="Tracker" method="reset"]
+[connection signal="timeout" from="ColorRect/ShaderTimer" to="ColorRect" method="_on_timer_timeout"]

@@ -58,6 +58,7 @@ script = ExtResource("8_f24es")
 
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_body_entered"]
 [connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/Tracker" method="reset"]
+[connection signal="player_entered" from="Goal" to="CanvasLayer/Timer/ColorRect" method="_on_goal_player_entered"]
 [connection signal="player_entered" from="Goal" to="MapManager" method="switch_map"]
 
 [editable path="CanvasLayer/Timer"]
