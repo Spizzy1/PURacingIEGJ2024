@@ -41,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -506.517, 243.25, 308.453)
 [node name="Goal" type="Area3D" parent="."]
 script = ExtResource("3_rgpmq")
 totalCheckpoints = 2
+totalLaps = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Goal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.01901, 54.2596)
