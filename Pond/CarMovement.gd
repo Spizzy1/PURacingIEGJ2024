@@ -12,7 +12,7 @@ var brake_force: float = 50
 var is_main = true
 
 var wasd = Vector3(0,0,0)
-var isbreak
+var isbreak = false
 
 @export
 var angular_correction_amount: float = 1
@@ -26,7 +26,7 @@ func _ready():
 		wheels.append(get_node("./Wheel_"+str(i+1)))
 		#print(wheels[i])
 	pass # Replace with function body.
-
+	is_main = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,7 +36,7 @@ func _process(delta):
 		wasd = Input.get_vector("Left", "Right","Backwards","Forwards")
 		isbreak = Input.is_action_pressed("Break")
 	engine_force = wasd.y*engine_max
-	steering = deg_to_rad(wasd.x*steering_max_deg* -1)
+	steering = lerp(steering, deg_to_rad(wasd.x*steering_max_deg* -1), delta*8)
 	if isbreak:
 		brake = brake_force
 	else:
@@ -45,11 +45,15 @@ func _process(delta):
 	#rotation.x = (rotation.x * angular_correction_amount)
 	#rotation.z = (rotation.z * angular_correction_amount)
 
-	print(str(rotation.x) + " and " + str(rotation.z))
+	#print(str(rotation.x) + " and " + str(rotation.z))
 	
 	var connector = null
-	connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
-	
+	if get_node_or_null("/root/Main"):
+		connector = get_node("/root/Main").get_node_or_null(str(get_node("/root/Main").id))
+	else:
+		get_node("/root/RaceGlobal").can_drive = true
+		if Input.is_action_just_pressed("Reset"):
+			position = Vector3(0,4,0)
 	#get_parent().get_node_or_null(str(get_parent().id))
 	if connector and is_main:
 		print("Cound connector")
@@ -68,4 +72,4 @@ func _process(delta):
 	#rotation_degrees.z = clamp(rotation_degrees.z, deg_to_rad(-50),deg_to_rad(50))
 
 func _physics_process(delta):
-	$"Camera Controller/Camera3D".fov =  linear_velocity.length()*2 + 50
+	$"Camera Controller/Camera3D".fov =  linear_velocity.length()*2 + 70

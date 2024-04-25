@@ -9,8 +9,10 @@ func _ready():
 	pass # Replace with function body.
 
 
+var camOffsetY:float = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	camOffsetY += Input.get_axis("CamLeft","CamRight") * 3
 	global_target_rot = get_parent().global_rotation
 	#global_target_rot.y += deg_to_rad(180)
 	
@@ -19,8 +21,9 @@ func _physics_process(delta):
 	#global_rotation.z = lerp_angle(pre_global_rot.z, -global_target_rot.z, delta*8)
 	global_rotation.x = lerp_angle(pre_global_rot.x, -global_target_rot.x, delta*8)
 	global_rotation.z = 0
+	#global_rotate(Vector3(0, 1, 0), camOffsetY)
 	pre_global_rot = global_rotation
 	#global_rotation.x = 0
-	global_rotate(Vector3(0,1,0), deg_to_rad(180))
+	global_rotate(Vector3(0,1,0), deg_to_rad(camOffsetY))
 	
 	pass

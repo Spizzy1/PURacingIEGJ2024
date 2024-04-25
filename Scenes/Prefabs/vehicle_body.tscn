@@ -17,89 +17,100 @@ albedo_texture = ExtResource("3_os1p4")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8twye"]
 material = SubResource("StandardMaterial3D_ovht3")
-top_radius = 0.25
-bottom_radius = 0.25
-height = 0.3
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.2
 
 [node name="Vehicle Body" type="VehicleBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19804, -0.118317)
-mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_euden")
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.1, 0.1)
-constant_force = Vector3(0, -100, 0)
+center_of_mass = Vector3(0, -0.9, 0.1)
+constant_force = Vector3(0, -200, 0)
 script = ExtResource("1_80cua")
-engine_max = 80.0
 steering_max_deg = 50.0
+brake_force = 100.0
 
 [node name="Wheel_1" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.756133, 0.808495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771, -0.495451, 0.808495)
 use_as_steering = true
+wheel_roll_influence = 0.5
 wheel_radius = 0.2
-wheel_friction_slip = 0.6
-suspension_stiffness = 50.0
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+suspension_max_force = 1e+13
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+steering_multiplier = 2.0
 used_for_driving = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_1"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_2" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.756133, 0.808495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.495451, 0.808495)
 use_as_steering = true
+wheel_roll_influence = 0.5
 wheel_radius = 0.2
-wheel_friction_slip = 0.6
-suspension_stiffness = 50.0
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+suspension_max_force = 1e+13
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
+steering_multiplier = 2.0
 used_for_driving = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_2"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_3" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.762183, -0.80509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.771264, -0.501501, -0.80509)
 use_as_traction = true
+wheel_roll_influence = 1.0
 wheel_radius = 0.2
-wheel_friction_slip = 1.0
-suspension_stiffness = 50.0
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.5
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+suspension_max_force = 1e+13
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
-steering_multiplier = 0.0
-canBreak = false
+steering_multiplier = -0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_3"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Wheel_4" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.762183, -0.8047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.771, -0.501501, -0.8047)
 use_as_traction = true
+wheel_roll_influence = 1.0
 wheel_radius = 0.2
-wheel_friction_slip = 1.0
-suspension_stiffness = 50.0
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.5
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+suspension_max_force = 1e+13
 damping_compression = 1.9
 damping_relaxation = 2.0
 script = ExtResource("2_rx08v")
-steering_multiplier = 0.0
-canBreak = false
+steering_multiplier = -0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wheel_4"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("CylinderMesh_8twye")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.983523, 0, 0, 0, 0.983523, 0, 0, 0, 0.983523, 0, -0.433286, 0.047067)
+transform = Transform3D(0.983523, 0, 0, 0, 0.983523, 0, 0, 0, 0.983523, 0, 0.891534, -0.0407066)
 shape = ExtResource("4_el5ku")
 
 [node name="Camera Pivot" type="Node3D" parent="."]
@@ -128,13 +139,11 @@ mesh = SubResource("CylinderMesh_8twye")
 skeleton = NodePath("../../Wheel_5")
 
 [node name="Camera Controller" type="Node3D" parent="."]
-transform = Transform3D(-1, -4.9738e-14, 8.74228e-08, 3.23101e-08, 0.929197, 0.369585, -8.1233e-08, 0.369585, -0.929197, 0, 2.95688, -4.70949)
 script = ExtResource("4_evmu0")
 
 [node name="Camera3D" type="Camera3D" parent="Camera Controller"]
-transform = Transform3D(1, 0, 1.42109e-14, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0)
+transform = Transform3D(-1, 2.72367e-15, -8.74228e-08, -2.86654e-08, 0.944715, 0.327894, 8.25896e-08, 0.327894, -0.944715, 0, 3.413, -4.686)
 doppler_tracking = 2
-fov = 63.8
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
