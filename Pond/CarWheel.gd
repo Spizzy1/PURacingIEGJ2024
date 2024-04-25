@@ -21,7 +21,8 @@ func _ready():
 func _process(delta):
 	
 	
-	steering = lerp(steering, (car_body.steering * steering_multiplier), delta*1);
+	steering = lerp(steering, (car_body.steering * steering_multiplier), delta*1000)
+	steering = car_body.steering * steering_multiplier
 	if canBreak:
 		brake = car_body.brake
 	if used_for_driving:
