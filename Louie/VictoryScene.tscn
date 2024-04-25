@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b01v7fi1yl0cd"]
+[gd_scene load_steps=6 format=3 uid="uid://b01v7fi1yl0cd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_sihmf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ocrkr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_155q3"]
+
+[sub_resource type="Sky" id="Sky_r4ja8"]
+sky_material = SubResource("ProceduralSkyMaterial_155q3")
+
+[sub_resource type="Environment" id="Environment_ujm24"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_r4ja8")
 
 [node name="VictoryScene" type="Node3D"]
 
@@ -16,4 +26,10 @@ mesh = SubResource("BoxMesh_sihmf")
 shape = SubResource("BoxShape3D_ocrkr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 76.924, 137.966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.7299, 137.966)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ujm24")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 47.4617, 0)
